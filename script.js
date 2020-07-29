@@ -1,10 +1,10 @@
-window.onload = () =>{
+window.onload = () => {
 
-    const createTweetContainer = document.getElementById("createTweetContainer"); 
+    const createTweetContainer = document.getElementById("createTweetContainer");
 
     const createTweetButton = document.getElementById("createTweetButton");
     const backArrow = document.getElementById("backArrow");
-    
+
     const tweetBox = document.getElementById("tweetBox");
 
     let tweetBoxInput;
@@ -15,64 +15,83 @@ window.onload = () =>{
     const tweetSentContainer = document.getElementById("tweetSentContainer");
 
 
-createTweetButton.onclick = () =>{
-    createTweetContainer.style.display = "block";
-}
+    createTweetButton.onclick = () => {
+        createTweetContainer.style.display = "block";
+    }
 
-backArrow.onclick = () => {
-    createTweetContainer.style.display = "none";
-}
-
-
-postTweetButton.onclick = () =>{
-
-    console.log(tweetBox.value);
-
-    tweetBoxInput = tweetBox.value;
-    var clonedTweet = tweetContainer.cloneNode(true);
-    pinnedTweet.after(clonedTweet);
+    backArrow.onclick = () => {
+        createTweetContainer.style.display = "none";
+    }
 
 
+    postTweetButton.onclick = () => {
+
+        console.log(tweetBox.value);
+
+        tweetBoxInput = tweetBox.value;
+        var clonedTweet = tweetContainer.cloneNode(true);
+
+        if (tweetBoxInput == "") {
+            console.log("please write tweet");
+        }
+
+        else {
+
+            clonedTweet.innerHTML = tweetBoxInput;
+
+            setTimeout(() => {
+                pinnedTweet.after(clonedTweet);
+            }, 1000);
 
 
-    createTweetContainer.style.display = "none";
-   tweetSentContainer.style.display = "flex";
-  
-/* Show Tweet Sent container*/
-   setTimeout(() => {
-    tweetSentContainer.style.height = "30px";
-}, 700);
+            createTweetContainer.style.display = "none";
+            tweetSentContainer.style.display = "flex";
 
-   setTimeout(() => {
-       tweetSentContainer.style.opacity = "1";
+            /* Show Tweet Sent container*/
+            setTimeout(() => {
+                tweetSentContainer.style.height = "30px";
+            }, 700);
 
-   }, 1000);
+            setTimeout(() => {
+                tweetSentContainer.style.opacity = "1";
 
-/* End of Show Tweet Sent container */
+            }, 1000);
 
-/* Hide Tweet Sent container */
+            /* End of Show Tweet Sent container */
 
-    setTimeout(() => {
-        tweetSentContainer.style.opacity = "0";
-    }, 5000); 
+            /* Hide Tweet Sent container */
 
-    setTimeout(() => {
-        tweetSentContainer.style.height = "0";
-        tweetSentContainer.style.marginBottom = "0";
-    }, 5300);
+            setTimeout(() => {
+                tweetSentContainer.style.opacity = "0";
+            }, 5000);
 
-    setTimeout(() => {
-        tweetSentContainer.style.display = "none";
-        tweetSentContainer.style.marginBottom = "12px";
-    }, 8000); 
-    
-/*End of Hide Tweet Sent container */
+            setTimeout(() => {
+                tweetSentContainer.style.height = "0";
+                tweetSentContainer.style.marginBottom = "0";
+            }, 5300);
+
+            setTimeout(() => {
+                tweetSentContainer.style.display = "none";
+                tweetSentContainer.style.marginBottom = "12px";
+            }, 8000);
+
+            /*End of Hide Tweet Sent container */
+        }
+
+       
+
+
+    }
+
+
+
+   
 
 
 
 
 
-}
+
 
 
 
