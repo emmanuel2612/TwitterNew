@@ -15,8 +15,47 @@ window.onload = () => {
     const tweetSentContainer = document.getElementById("tweetSentContainer");
 
 
+
+    /* Tweet Component */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* End of Tweet Component */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     createTweetButton.onclick = () => {
         createTweetContainer.style.display = "block";
+        tweetBox.value = "";
     }
 
     backArrow.onclick = () => {
@@ -26,10 +65,12 @@ window.onload = () => {
 
     postTweetButton.onclick = () => {
 
+        
+
         console.log(tweetBox.value);
 
         tweetBoxInput = tweetBox.value;
-        var clonedTweet = tweetContainer.cloneNode(true);
+
 
         if (tweetBoxInput == "") {
             console.log("please write tweet");
@@ -37,25 +78,62 @@ window.onload = () => {
 
         else {
 
-            clonedTweet.innerHTML = tweetBoxInput;
-
-            setTimeout(() => {
-                pinnedTweet.after(clonedTweet);
-            }, 1000);
-
-
             createTweetContainer.style.display = "none";
             tweetSentContainer.style.display = "flex";
+
+            
+
+
+            class Tweet extends HTMLElement {
+                connectedCallback() {
+                    this.innerHTML = `
+
+                   
+                    <div id="tweetContainer" class= "tweetContainer">
+                            <figure class="tweetProfileImgContainer">
+                                <img class="tweetProfileImg" src="images/profilepicture.jpg">
+                            </figure>
+        
+                            <div>
+                            <h4 class="tweetName">Emmanuel</h4>
+        
+                            <p class="tweetText">${tweetBoxInput}</p>
+                            </p>
+        
+                             </div>
+                           
+                    `
+                }
+
+            }
+
+          
+
+            customElements.define('tweet-container', Tweet);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             /* Show Tweet Sent container*/
             setTimeout(() => {
                 tweetSentContainer.style.height = "30px";
-            }, 700);
+            }, 1000);
 
             setTimeout(() => {
                 tweetSentContainer.style.opacity = "1";
 
-            }, 1000);
+            }, 1300);
 
             /* End of Show Tweet Sent container */
 
@@ -78,14 +156,16 @@ window.onload = () => {
             /*End of Hide Tweet Sent container */
         }
 
-       
+
 
 
     }
 
+    
 
 
-   
+
+
 
 
 
