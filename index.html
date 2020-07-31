@@ -31,9 +31,13 @@
                 <p>View</p>
             </div>
 
+            <div id="navPusher">
+            </div>
+            
             <div id="navBar">
             </div>
 
+           
 
 
         </div>
@@ -179,12 +183,24 @@
 
 
 
-            <tweet-container></tweet-container>
-            <tweet-container></tweet-container>
-            <tweet-container></tweet-container>
-            <tweet-container></tweet-container>
-            <tweet-container></tweet-container>
-            <tweet-container></tweet-container>
+            <template id="tweet-template">
+
+
+                <div id="tweetContainer" class="tweetContainer">
+                    <figure class="tweetProfileImgContainer">
+                        <img class="tweetProfileImg" src="images/profilepicture.jpg">
+                    </figure>
+
+                    <div>
+                        <h4 class="tweetName">Emmanuel</h4>
+
+                        <p id="tweetText"></p>
+                        
+
+                    </div>
+
+            </template>
+
 
 
 

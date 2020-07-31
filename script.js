@@ -16,40 +16,6 @@ window.onload = () => {
 
 
 
-    /* Tweet Component */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* End of Tweet Component */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -65,8 +31,10 @@ window.onload = () => {
 
     postTweetButton.onclick = () => {
 
-        
-
+        var tweetText = document.getElementById("tweetText");
+    
+            
+    
         console.log(tweetBox.value);
 
         tweetBoxInput = tweetBox.value;
@@ -81,50 +49,18 @@ window.onload = () => {
             createTweetContainer.style.display = "none";
             tweetSentContainer.style.display = "flex";
 
+            var tweetTemplate = document.getElementById("tweet-template"); 
             
+            
+            var tweetInstance = document.importNode(tweetTemplate.content, true); /*Import template into the DOM*/
 
 
-            class Tweet extends HTMLElement {
-                connectedCallback() {
-                    this.innerHTML = `
+            tweetInstance.querySelectorAll('p')[0].innerHTML = tweetBoxInput; /* Set paragraph text of new node */
 
-                   
-                    <div id="tweetContainer" class= "tweetContainer">
-                            <figure class="tweetProfileImgContainer">
-                                <img class="tweetProfileImg" src="images/profilepicture.jpg">
-                            </figure>
-        
-                            <div>
-                            <h4 class="tweetName">Emmanuel</h4>
-        
-                            <p class="tweetText">${tweetBoxInput}</p>
-                            </p>
-        
-                             </div>
-                           
-                    `
-                }
-
-            }
-
+             pinnedTweet.after(tweetInstance);
           
-
-            customElements.define('tweet-container', Tweet);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
+            
             /* Show Tweet Sent container*/
             setTimeout(() => {
                 tweetSentContainer.style.height = "30px";
