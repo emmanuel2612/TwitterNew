@@ -10,7 +10,6 @@ window.onload = () => {
     let tweetBoxInput;
 
     const pinnedTweet = document.getElementById("pinnedTweet");
-    const tweetContainer = document.getElementById("tweetContainer");
 
     const tweetSentContainer = document.getElementById("tweetSentContainer");
 
@@ -31,11 +30,9 @@ window.onload = () => {
 
     postTweetButton.onclick = () => {
 
-        var tweetText = document.getElementById("tweetText");
     
-            
     
-        console.log(tweetBox.value);
+
 
         tweetBoxInput = tweetBox.value;
 
@@ -57,9 +54,13 @@ window.onload = () => {
 
             tweetInstance.querySelectorAll('p')[0].innerHTML = tweetBoxInput; /* Set paragraph text of new node */
 
-             pinnedTweet.after(tweetInstance);
+             pinnedTweet.after(tweetInstance); /* Place new tweet underneath pinned tweet*/
           
-       
+             
+             tweetTemplate.content.querySelector('#button').onclick = () =>{
+                createTweetContainer.style.display = "block";
+                console.log("edit button clicked");
+            }
             
             /* Show Tweet Sent container*/
             setTimeout(() => {
@@ -97,7 +98,44 @@ window.onload = () => {
 
     }
 
+
+
     
+
+   
+
+       
+
+      
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
