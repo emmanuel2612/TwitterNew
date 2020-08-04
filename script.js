@@ -4,6 +4,8 @@ window.onload = () => {
 
     const createTweetButton = document.getElementById("createTweetButton");
     const backArrow = document.getElementById("backArrow");
+    const postTweetButton = document.getElementById("postTweetButton");
+    const updateTweetButton = document.getElementById("updateTweetButton");
 
     const tweetBox = document.getElementById("tweetBox");
 
@@ -14,13 +16,18 @@ window.onload = () => {
     const tweetSentContainer = document.getElementById("tweetSentContainer");
 
 
+    var tweetTemplate = document.getElementById("tweet-template");
+
+
+           
+
+            
 
 
 
 
     createTweetButton.onclick = () => {
         createTweetContainer.style.display = "block";
-        tweetBox.value = "";
     }
 
     backArrow.onclick = () => {
@@ -30,11 +37,10 @@ window.onload = () => {
 
     postTweetButton.onclick = () => {
 
-    
-    
-
 
         tweetBoxInput = tweetBox.value;
+
+        tweetBox.value = "";
 
 
         if (tweetBoxInput == "") {
@@ -43,25 +49,77 @@ window.onload = () => {
 
         else {
 
+
             createTweetContainer.style.display = "none";
             tweetSentContainer.style.display = "flex";
 
-            var tweetTemplate = document.getElementById("tweet-template"); 
-            
-            
             var tweetInstance = document.importNode(tweetTemplate.content, true); /*Import template into the DOM*/
+            var tweetText = tweetInstance.querySelector('p');
+            var editButton = tweetInstance.querySelector('#button');
 
+            tweetText.innerHTML = tweetBoxInput; /* Set paragraph text of new node */
 
-            tweetInstance.querySelectorAll('p')[0].innerHTML = tweetBoxInput; /* Set paragraph text of new node */
-
-             pinnedTweet.after(tweetInstance); /* Place new tweet underneath pinned tweet*/
-          
-             
-             tweetTemplate.content.querySelector('#button').onclick = () =>{
+            editButton.onclick = () => {
                 createTweetContainer.style.display = "block";
                 console.log("edit button clicked");
+
+                tweetBox.value = tweetText.innerHTML;
+
+                postTweetButton.style.display = "none";
+                updateTweetButton.style.display = "block";
+            } 
+
+            // Then append to the DOM
+            pinnedTweet.after(tweetInstance); 
+
+
+            /* Edit Button */
+            if (tweetText.innerHTML.length <= 100) {
+                setTimeout(() => {
+                    editButton.style.display = "none";
+                }, 5000);
             }
-            
+
+            else if (tweetText.innerHTML.length > 100 && tweetText.innerHTML.length < 200){
+                setTimeout(() => {
+                    editButton.style.display = "none";
+                }, 10000);
+            }
+
+            else if (tweetText.innerHTML.length > 200 && tweetText.innerHTML.length <= 300){
+                setTimeout(() => {
+                    editButton.style.display = "none";
+                }, 15000);
+            }
+
+
+
+            /* End of Edit Button */
+
+            updateTweetButton.onclick = () =>{
+
+                tweetText.innerHTML = tweetBox.value; 
+
+                createTweetContainer.style.display = "none";
+
+                tweetBox.value = "";
+    
+
+                updateTweetButton.style.display = "none";
+                postTweetButton.style.display = "block";
+
+            }
+
+
+
+
+
+
+
+
+    
+
+
             /* Show Tweet Sent container*/
             setTimeout(() => {
                 tweetSentContainer.style.height = "30px";
@@ -94,21 +152,29 @@ window.onload = () => {
         }
 
 
+         /* Edit Button Timing*/
+
+         if (tweetText.length > 10) {
+
+            pinnedTweet.style.display = "none";
+
+        }
+
+
+
+
+        /* End of Edit Button Timing */
+
+
+
+
 
 
     }
 
 
 
-    
 
-   
-
-       
-
-      
-
-    
 
 
 
