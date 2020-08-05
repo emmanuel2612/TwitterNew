@@ -18,12 +18,9 @@ window.onload = () => {
 
     var tweetTemplate = document.getElementById("tweet-template");
 
+    
 
-           
-
-            
-
-
+  
 
 
     createTweetButton.onclick = () => {
@@ -32,6 +29,9 @@ window.onload = () => {
 
     backArrow.onclick = () => {
         createTweetContainer.style.display = "none";
+
+        updateTweetButton.style.display = "none";
+        postTweetButton.style.display = "block";
     }
 
 
@@ -55,7 +55,11 @@ window.onload = () => {
 
             var tweetInstance = document.importNode(tweetTemplate.content, true); /*Import template into the DOM*/
             var tweetText = tweetInstance.querySelector('p');
-            var editButton = tweetInstance.querySelector('#button');
+            var editButton = tweetInstance.querySelector('#editButton');
+            var arrowMenuButton = tweetInstance.querySelector('#arrowMenuButton');
+            var menuContainer = tweetInstance.querySelector('#menuContainer');
+            var menu = tweetInstance.querySelector('#menu');
+            var cancelButton = tweetInstance.querySelector('#cancelButton');
 
             tweetText.innerHTML = tweetBoxInput; /* Set paragraph text of new node */
 
@@ -67,28 +71,41 @@ window.onload = () => {
 
                 postTweetButton.style.display = "none";
                 updateTweetButton.style.display = "block";
+
+                hideMenu();
             } 
 
-            // Then append to the DOM
-            pinnedTweet.after(tweetInstance); 
+
+            arrowMenuButton.onclick = () => {
+                showMenu();
+            }
+
+            cancelButton.onclick = () =>{
+                hideMenu();
+            }
+
+        
 
 
             /* Edit Button */
             if (tweetText.innerHTML.length <= 100) {
                 setTimeout(() => {
-                    editButton.style.display = "none";
+                    editButton.onclick = null;
+                    editButton.style.opacity = "0.5";
                 }, 5000);
             }
 
             else if (tweetText.innerHTML.length > 100 && tweetText.innerHTML.length < 200){
                 setTimeout(() => {
-                    editButton.style.display = "none";
+                    editButton.onclick = null;
+                    editButton.style.opacity = "0.5";
                 }, 10000);
             }
 
             else if (tweetText.innerHTML.length > 200 && tweetText.innerHTML.length <= 300){
                 setTimeout(() => {
-                    editButton.style.display = "none";
+                    editButton.onclick = null;
+                    editButton.style.opacity = "0.5";
                 }, 15000);
             }
 
@@ -107,6 +124,8 @@ window.onload = () => {
 
                 updateTweetButton.style.display = "none";
                 postTweetButton.style.display = "block";
+
+                editButton.style.display = "none";
 
             }
 
@@ -149,23 +168,70 @@ window.onload = () => {
             }, 8000);
 
             /*End of Hide Tweet Sent container */
+
+             // Then append to the DOM
+             
         }
+
+        pinnedTweet.after(tweetInstance); 
 
 
          /* Edit Button Timing*/
 
-         if (tweetText.length > 10) {
-
-            pinnedTweet.style.display = "none";
-
-        }
-
+        
 
 
 
         /* End of Edit Button Timing */
 
 
+        const showMenu = () =>{
+
+            menuContainer.style.display = "flex";
+            menuContainer.style.transform = "translateY(0%)";
+
+            setTimeout(() => {
+                menuContainer.style.opacity = "1";
+            }, 50);
+
+            setTimeout(() => {
+                menu.style.opacity = "1";
+                menu.style.transform = "translateY(0%)";
+            }, 50);
+
+
+           
+        }
+    
+        const hideMenu = () =>{
+    
+           
+            setTimeout(() => {
+                menu.style.opacity = "0";
+                menu.style.transform = "translateY(100%)";
+                menuContainer.style.opacity = "0";
+            }, 50);
+
+            setTimeout(() => {
+                menuContainer.style.transform = "translate(0%)";
+            }, 200);
+
+            setTimeout(() => {
+                menuContainer.style.display = "none";
+            }, 500);
+
+          
+
+            
+
+
+            
+
+
+               
+         
+          
+        }
 
 
 
@@ -177,7 +243,7 @@ window.onload = () => {
 
 
 
-
+   
 
 
 

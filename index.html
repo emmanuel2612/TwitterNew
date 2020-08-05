@@ -20,6 +20,8 @@
 
     <main>
 
+       
+
         <div id="bottomFixed">
 
             <div id="createTweetButton">
@@ -119,7 +121,9 @@
 
                 <div>
 
-                    <h4 class="tweetName bodyText">Emmanuel <span class="greyText">@EO2612</span></h4>
+                    <h4 class="tweetName bodyText">Emmanuel <span class="greyText">@EO2612</span> </h4> 
+
+                    
 
                     <p class="tweetText bodyText">I developed a @SpotifyUK @Spotify concept with some new features
                         such as: Spotify DJ, change music speed & view worldwide listeners.
@@ -165,11 +169,28 @@
                         <h4 class="tweetName">Emmanuel <span class="greyText">@EO2612</span></h4>
 
                         <p id="tweetText"></p>
+                    </div>
 
-                        <button id="button">edit</button>
-                        
+                    <i id="arrowMenuButton" class="fas fa-angle-down" style="color: white;"></i>
 
+                    <div id="menuContainer">
 
+                        <div id="menu">
+            
+                            <div id="deleteTweetButton" class="menuButton">
+                                <i class="fas fa-trash"></i>
+                                <p>Delete Tweet</p>
+                            </div>
+            
+                            <div id="editButton" class="menuButton">
+                                <i class="fas fa-pen-alt"></i>
+                                <p>Edit Tweet</p>
+                            </div>
+
+                            <button id="cancelButton">CANCEL</button>
+            
+                        </div>
+            
                     </div>
 
             </template>
