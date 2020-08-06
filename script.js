@@ -125,7 +125,7 @@ window.onload = () => {
                 updateTweetButton.style.display = "none";
                 postTweetButton.style.display = "block";
 
-                editButton.style.display = "none";
+                /*editButton.style.display = "none"; */
 
             }
 
@@ -199,6 +199,7 @@ window.onload = () => {
                 menu.style.transform = "translateY(0%)";
             }, 50);
 
+            document.body.style.overflow = "hidden";
 
            
         }
@@ -221,6 +222,7 @@ window.onload = () => {
             }, 500);
 
           
+            document.body.style.overflow = "auto";
 
             
 
