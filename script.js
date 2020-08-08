@@ -284,7 +284,7 @@ window.onload = () => {
 
             }
 
-    
+
 
 
 
@@ -306,14 +306,19 @@ window.onload = () => {
 
 
 
-
-
-
-
-
-
-
         }
+
+
+        tweetBox.onkeydown = () => {
+
+            if ((tweetBox.onkeydown) && (tweetBox.value.length > 1)) { // Backspace
+
+                postTweetButton.style.opacity = "1";
+
+
+            }
+
+        } 
 
 
 
@@ -330,7 +335,6 @@ window.onload = () => {
             phraseButton.style.display = "none";
         }, 300);
     }
-
 
 
 
