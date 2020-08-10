@@ -25,6 +25,7 @@ window.onload = () => {
 
     createTweetButton.onclick = () => {
         createTweetContainer.style.display = "block";
+        tweetBox.focus();
     }
 
     backArrow.onclick = () => {
@@ -253,12 +254,7 @@ window.onload = () => {
 
         document.onkeydown = (event) => {
 
-
-            if ((event.keyCode == "71") && (tweetBox.value.length == 0)) { // If the key pressed is G, and the textbox is empty (To be the first character)
-
-                phraseButton.style.display = "flex";
-                phraseButton.innerHTML = "Good Morning";
-
+            const showHidePhrase = () =>{
                 setTimeout(() => {
                     phraseButton.style.opacity = "1";
                 }, 300);
@@ -269,26 +265,7 @@ window.onload = () => {
 
             }
 
-            else if ((event.keyCode == "68") && (tweetBox.value.length == 0)) { // If the key pressed is D, and the textbox is empty (To be the first character)
-
-                phraseButton.style.display = "flex";
-                phraseButton.innerHTML = "Dfkm &#128514;";
-
-                setTimeout(() => {
-                    phraseButton.style.opacity = "1";
-                }, 300);
-
-                setTimeout(() => {
-                    phraseButton.style.opacity = "0";
-                }, 5000);
-
-            }
-
-
-
-
-
-
+            
             if ((event.keyCode == "8") && (tweetBox.value.length == 1)) { // Backspace
 
                 phraseButton.style.opacity = "0";
@@ -301,6 +278,69 @@ window.onload = () => {
                 console.log("Empty!!");
 
             }
+
+
+            
+
+            if ((event.keyCode == "68") && (tweetBox.value.length == 0)) { // If the key pressed is D, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Dfkm &#128514;";
+
+                showHidePhrase();
+
+            }
+
+            else if ((event.keyCode == "71") && (tweetBox.value.length == 0)) { // If the key pressed is G, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Good Morning";
+
+                showHidePhrase();
+            }
+
+
+            else if ((event.keyCode == "73") && (tweetBox.value.length == 0)) { // If the key pressed is I, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "I can't come and kill myself";
+
+                showHidePhrase();
+            }
+
+            else if ((event.keyCode == "76") && (tweetBox.value.length == 0)) { // If the key pressed is L, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Loooooool";
+
+                showHidePhrase();
+            }
+
+            else if ((event.keyCode == "84") && (tweetBox.value.length == 0)) { // If the key pressed is T, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Their father";
+
+                showHidePhrase();
+            }
+
+            else if ((event.keyCode == "87") && (tweetBox.value.length == 0)) { // If the key pressed is W, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Wizkid";
+
+                showHidePhrase();
+            }
+
+
+            else if ((event.keyCode == "89") && (tweetBox.value.length == 0)) { // If the key pressed is Y, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Your father";
+
+                showHidePhrase();
+            }
+
 
 
 
