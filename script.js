@@ -236,6 +236,16 @@ window.onload = () => {
 
         }
 
+        menuContainer.onclick = (event) =>{
+            hideMenu();
+        }
+
+        menu.onclick = (event) =>{
+            event.stopPropagation();  // Stop the menu from being hidden onclick due to containers onclick event
+           
+        }
+
+
 
 
 
