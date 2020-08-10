@@ -93,21 +93,21 @@ window.onload = () => {
                 setTimeout(() => {
                     editButton.onclick = null;
                     editButton.style.opacity = "0.5";
-                }, 5000);
+                }, 10000);
             }
 
             else if (tweetText.innerHTML.length > 100 && tweetText.innerHTML.length < 200) {
                 setTimeout(() => {
                     editButton.onclick = null;
                     editButton.style.opacity = "0.5";
-                }, 10000);
+                }, 15000);
             }
 
             else if (tweetText.innerHTML.length > 200 && tweetText.innerHTML.length <= 300) {
                 setTimeout(() => {
                     editButton.onclick = null;
                     editButton.style.opacity = "0.5";
-                }, 15000);
+                }, 20000);
             }
 
 
