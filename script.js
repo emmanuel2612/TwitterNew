@@ -200,7 +200,7 @@ window.onload = () => {
                 menu.style.transform = "translateY(0%)";
             }, 50);
 
-            document.body.style.overflow = "hidden";
+           //  document.body.style.overflow = "hidden"; 
 
 
         }
