@@ -57,6 +57,7 @@ window.onload = () => {
             var tweetInstance = document.importNode(tweetTemplate.content, true); /*Import template into the DOM*/
             var tweetText = tweetInstance.querySelector('p');
             var editButton = tweetInstance.querySelector('#editButton');
+            var deleteButton = tweetInstance.querySelector('#deleteButton');
             var arrowMenuButton = tweetInstance.querySelector('#arrowMenuButton');
             var menuContainer = tweetInstance.querySelector('#menuContainer');
             var menu = tweetInstance.querySelector('#menu');
@@ -75,6 +76,8 @@ window.onload = () => {
 
                 hideMenu();
             }
+
+
 
 
             arrowMenuButton.onclick = () => {
@@ -245,6 +248,10 @@ window.onload = () => {
            
         }
 
+        deleteButton.onclick = () => {
+            tweetInstance.remove();
+        }
+
 
 
 
@@ -256,6 +263,7 @@ window.onload = () => {
 
 
     var phraseButton = document.getElementById("phraseButton");
+    var phraseButtonTwo = document.getElementById("phraseButton2");
 
 
     tweetBox.onfocus = () => {
@@ -267,10 +275,12 @@ window.onload = () => {
             const showHidePhrase = () =>{
                 setTimeout(() => {
                     phraseButton.style.opacity = "1";
+                    phraseButtonTwo.style.opacity = "1";
                 }, 300);
 
                 setTimeout(() => {
                     phraseButton.style.opacity = "0";
+                    phraseButtonTwo.style.opacity = "0";
                 }, 5000);
 
             }
@@ -280,8 +290,11 @@ window.onload = () => {
 
                 phraseButton.style.opacity = "0";
 
+                phraseButtonTwo.style.opacity = "0";
+
                 setTimeout(() => {
                     phraseButton.style.display = "none";
+                    phraseButtonTwo.style.display = "none";
                 }, 300);
 
 
@@ -301,10 +314,24 @@ window.onload = () => {
 
             }
 
+            else if ((event.keyCode == "69") && (tweetBox.value.length == 0)) { // If the key pressed is E, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Emmanuel";
+
+                showHidePhrase();
+            }
+
+
             else if ((event.keyCode == "71") && (tweetBox.value.length == 0)) { // If the key pressed is G, and the textbox is empty (To be the first character)
 
                 phraseButton.style.display = "flex";
+
+                phraseButtonTwo.style.display = "flex";
+
                 phraseButton.innerHTML = "Good Morning";
+
+                phraseButtonTwo.innerHTML = "Give it a rest";
 
                 showHidePhrase();
             }
@@ -322,6 +349,14 @@ window.onload = () => {
 
                 phraseButton.style.display = "flex";
                 phraseButton.innerHTML = "Loooooool";
+
+                showHidePhrase();
+            }
+
+            else if ((event.keyCode == "78") && (tweetBox.value.length == 0)) { // If the key pressed is N, and the textbox is empty (To be the first character)
+
+                phraseButton.style.display = "flex";
+                phraseButton.innerHTML = "Nigeria";
 
                 showHidePhrase();
             }
@@ -380,9 +415,23 @@ window.onload = () => {
         tweetBox.value = phraseButton.innerHTML;
 
         phraseButton.style.opacity = "0";
+        phraseButtonTwo.style.opacity = "0";
 
         setTimeout(() => {
             phraseButton.style.display = "none";
+            phraseButtonTwo.style.opacity = "0";
+        }, 300);
+    }
+
+    phraseButtonTwo.onclick = () => {
+        tweetBox.value = phraseButtonTwo.innerHTML;
+
+        phraseButtonTwo.style.opacity = "0";
+        phraseButton.style.opacity = "0";
+
+        setTimeout(() => {
+            phraseButton.style.display = "none";
+            phraseButtonTwo.style.opacity = "0";
         }, 300);
     }
 
